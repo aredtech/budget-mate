@@ -1,0 +1,36 @@
+<div
+  class="bm-sidenav-container"
+  [@sideNavOpenClose]="sidenavOpened ? 'open' : 'closed'"
+>
+  <div class="bm-sidenav-handler">
+    <span
+      class="material-symbols-rounded"
+      (click)="sidenavOpened = !sidenavOpened"
+      [ngStyle]="sidenavOpened ? { rotate: '180deg' } : {}"
+    >
+      arrow_back_ios_new
+    </span>
+  </div>
+  <div class="bm-sidenav__header">
+    <img src="assets/logo.svg" alt="" />
+    @if(sidenavOpened) { HealthMate }
+  </div>
+  <ul class="bm-sidenav-menu-items">
+    @for(item of navItems; track item){
+    <li
+      [routerLink]="[item.route]"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <span class="material-symbols-rounded">
+        {{ item.icon }}
+      </span>
+      @if (sidenavOpened) {
+      <p>
+        {{ item.name }}
+      </p>
+      }
+    </li>
+    }
+  </ul>
+</div>

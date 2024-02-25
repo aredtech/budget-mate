@@ -1,0 +1,6 @@
+<input (input)="filterIcons($event)" />
+<div>
+  @for(icon of filteredIcons; track icon){
+  <span class="material-symbols-outlined"> {{ icon.name }} </span>
+  }
+</div>
